@@ -19,7 +19,7 @@ public class ScreenToCameraTo2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             Ray r =Cam3D.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(r, out RaycastHit hit))
