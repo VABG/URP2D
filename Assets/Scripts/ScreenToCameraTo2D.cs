@@ -8,7 +8,9 @@ public class ScreenToCameraTo2D : MonoBehaviour
     [SerializeField] Camera Cam3D;
     [SerializeField] Camera Cam2D;
     [SerializeField] GameObject objectToMove;
+    [SerializeField] LookAtScreen onlooker;
     PixelPerfectCamera ppCam;
+    [SerializeField] LayerMask mask;
 
     // Start is called before the first frame update
     void Start()
@@ -21,15 +23,16 @@ public class ScreenToCameraTo2D : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            Ray r =Cam3D.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(r, out RaycastHit hit))
+            Ray r = Cam3D.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(r, out RaycastHit hit, 5, mask))
             {
-                Debug.Log("First hit successful at: " + hit.textureCoord.ToString());
+                //Debug.Log("First hit successful at: " + hit.textureCoord.ToString());
                 Vector2 hitUV = hit.textureCoord;
                 hitUV *= 2;
                 hitUV -= Vector2.one;
                 Vector3 pos = hitUV * ppCam.orthographicSize;
                 objectToMove.transform.position = pos;
+                onlooker.SetLookTarget(hit.point);
             }
         }
     }
