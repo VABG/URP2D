@@ -11,6 +11,7 @@ public class ScreenToCameraTo2D : MonoBehaviour
     [SerializeField] LookAtScreen onlooker;
     PixelPerfectCamera ppCam;
     [SerializeField] LayerMask mask;
+    [SerializeField] FollowHandMovement handTarget;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,9 @@ public class ScreenToCameraTo2D : MonoBehaviour
                 Vector2 hitUV = hit.textureCoord;
                 hitUV *= 2;
                 hitUV -= Vector2.one;
+                // Send to hand target
+                handTarget.RecieveMousePosition(hitUV);
+
                 Vector3 pos = hitUV * ppCam.orthographicSize;
                 objectToMove.transform.position = pos;
                 onlooker.SetLookTarget(hit.point);
