@@ -30,8 +30,9 @@ public class IKSolver3D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        b[0] = bones[0].position;
         SolveIK();
-        SetIK();
+        RotateBonesToIKPoints();
     }
 
     float GetAllBonesLength()
@@ -108,12 +109,8 @@ public class IKSolver3D : MonoBehaviour
             }
         }
     }
-    
-    void SetIK()
-    {
-        RotateBonesWithPointVector();
-    }
-    void RotateBonesWithPointVector()
+
+    void RotateBonesToIKPoints()
     {
         // Fix look direction of all bones!
         for (int i = 0; i < bones.Length - 1; i++)
