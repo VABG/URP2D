@@ -8,10 +8,8 @@ public class PlayerSkelly : MonoBehaviour
     Animator anim;
     Rigidbody2D rb;
     [SerializeField] float moveSpeed = 5.5f;
-    ConversationSkelly convoBoy;
     List<ConversationSkelly> convoBoys = new List<ConversationSkelly>();
-    [SerializeField]
-    UI2D ui;
+    [SerializeField] UI2D ui;
 
     // Start is called before the first frame update
     void Start()
