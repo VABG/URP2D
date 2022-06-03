@@ -8,7 +8,6 @@ public class SkeletonAI : MonoBehaviour
     Animator anim;
     Rigidbody2D rb;
 
-
     float walkTimeAvg = 1.0f;
     float standTimeAvg = 1.0f;
     float turnProbability = 1.0f;
@@ -41,8 +40,9 @@ public class SkeletonAI : MonoBehaviour
             if (moveTimer <= 0) Walk();
         }
     }
+    
 
-    void StopWalk()
+    public void StopWalk()
     {
         walking = false;
         moveTimer = standTimeAvg * (Random.value + .5f);

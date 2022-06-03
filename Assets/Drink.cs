@@ -71,6 +71,7 @@ public class Drink : MonoBehaviour
             case DrinkState.RotatingDrink:
                 lerp = 1 - (timer / rotateDrinkTime);
                 targetRot = Quaternion.Slerp(startRot, mouthTarget.rotation, lerp);
+                targetPos = mouthTarget.position;
 
                 if (timer <= 0)
                 {
